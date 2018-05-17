@@ -34,7 +34,7 @@ def webhook():
     #print(res)
     #r = make_response(res)
     #r.headers['Content-Type'] = 'application/json'
-    #return res
+    return res
 
    
 
@@ -48,9 +48,7 @@ def relayRequest(req):
     result = urlopen(reqObj,jsondataasbytes).read()
     #data = json.loads(result)
     #res = makeWebhookResult(data,req)
-    
-    "displayText": "Allowed"
-       
+         
     return result
 
 if __name__ == '__main__':

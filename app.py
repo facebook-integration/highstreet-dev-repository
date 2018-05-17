@@ -28,6 +28,7 @@ def webhook():
     print("Request: Latest 1")
     print(json.dumps(req, indent=4))
     res = relayRequest(req)
+    
     print(res)
 
     #res = json.dumps(res, indent=4)
@@ -45,7 +46,9 @@ def relayRequest(req):
     jsondata = json.dumps(req)
     jsondataasbytes = jsondata.encode('utf-8')   # needs to be bytes
     reqObj.add_header('Content-Length', len(jsondataasbytes))
+    print("before calling urlopen method")
     result = urlopen(reqObj,jsondataasbytes).read()
+    print("after calling urlopen method")
     #data = json.loads(result)
     #res = makeWebhookResult(data,req)
          

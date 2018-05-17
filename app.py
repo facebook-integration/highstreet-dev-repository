@@ -34,7 +34,11 @@ def webhook():
     #print(res)
     #r = make_response(res)
     #r.headers['Content-Type'] = 'application/json'
-    return res
+    #return res
+
+return{
+          "displayText": "Allowed"
+      }    
 
 def relayRequest(req):
     baseurl = "http://52.22.7.62:9001/highstreetcommercewebservices/v2/highstreet/webhook/"

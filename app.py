@@ -40,10 +40,11 @@ def webhook():
    
 
 def relayRequest(req):
-    baseurl = "https://52.22.7.62:9002/highstreetcommercewebservices/v2/highstreet/webhook/"
+    baseurl = "http://52.22.7.62:9001/highstreetcommercewebservices/v2/highstreet/webhook/"
     reqObj = urllib.request.Request(baseurl)
     reqObj.add_header('Content-Type', 'application/json; charset=utf-8')
     jsondata = json.dumps(req)
+    print(jsondata)
     jsondataasbytes = jsondata.encode('utf-8')   # needs to be bytes
     reqObj.add_header('Content-Length', len(jsondataasbytes))
     print("before calling urlopen  method1")

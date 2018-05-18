@@ -45,8 +45,8 @@ def relayRequest(req):
     reqObj.add_header('Content-Type', 'application/json; charset=utf-8')
     jsondata = json.dumps(req)
     jsondataasbytes = jsondata.encode('utf-8')   # needs to be bytes
-    print(jsondataasbytes)
     reqObj.add_header('Content-Length', len(jsondataasbytes))
+    print(reqObj)
     print("before calling urlopen  method1")
     result = urlopen(reqObj,jsondataasbytes).read()
     print("after calling urlopen method2")

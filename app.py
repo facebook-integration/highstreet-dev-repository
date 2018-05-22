@@ -27,7 +27,7 @@ def webhook():
     
     print("Request: Latest 1")
     print(json.dumps(req, indent=4))
-    res = relayRequest(req)
+    res = getAccessToken(req)
     
     print(res)
 
@@ -54,6 +54,24 @@ def relayRequest(req):
     #res = makeWebhookResult(data,req)
          
     return result
+
+
+def getAccessToken(req):
+    baseurl = "http://52.22.7.62:9001/highstreetcommercewebservices/v2/highstreet/webhook/"
+    reqObj = urllib.request.Request(baseurl)
+    reqObj.add_header('Content-Type', 'application/json; charset=utf-8')
+    jsondata = json.dumps(req)
+    jsondataasbytes = jsondata.encode('utf-8')   # needs to be bytes
+    reqObj.add_header('Content-Length', len(jsondataasbytes))
+    print(reqObj)
+    print("before calling urlopen  method1")
+    result = urlopen(reqObj,jsondataasbytes).read()
+    print("after calling urlopen method2")
+    #data = json.loads(result)
+    #res = makeWebhookResult(data,req)
+         
+    return result
+
 
 if __name__ == '__main__':
     port = int(os.getenv('PORT', 5000))
